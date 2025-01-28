@@ -99,7 +99,7 @@ def _bedrock_knowledge_base_search(bot: BotModel, query: str) -> list[SearchResu
             location = retrieval_result.get("location", {})
             location_type = location.get("type")
 
-            if location_type == "WEB":
+            if location_type == "WEB" or location_type == "CONFLUENCE":
                 url = location.get("webLocation", {}).get("url", "")
                 return (url, url)
 
