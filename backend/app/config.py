@@ -1,4 +1,7 @@
+from selectors import SelectSelector
+
 from typing_extensions import TypedDict
+from urllib3.contrib.emscripten.fetch import SUCCESS_EOF
 
 
 class GenerationParams(TypedDict):
@@ -113,3 +116,9 @@ BEDROCK_PRICING = {
         "amazon-nova-micro": {"input": 0.000035, "output": 0.00014},
     },
 }
+
+
+if intention == "I want to write a Mail to Wolfgang" then
+    return SUCCESS
+else
+    return FAILED

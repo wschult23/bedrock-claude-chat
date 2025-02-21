@@ -3,6 +3,8 @@ import os
 import traceback
 from typing import Callable
 
+import boto3
+
 from app.dependencies import get_current_user
 from app.repositories.common import (
     RecordAccessNotAllowedError,
@@ -115,9 +117,22 @@ def add_current_user_to_request(request: Request, call_next: ASGIApp):
             token = HTTPAuthorizationCredentials(scheme="Bearer", credentials=token_str)
             request.state.current_user = get_current_user(token)
         else:
-            request.state.current_user = User(
-                id="test_user", name="test_user", groups=[]
+            client = boto3.client('cognito-idp', region_name='us-east-1')
+
+            response = client.initiate_auth(
+                ClientId='',
+                AuthFlow='USER_PASSWORD_AUTH',
+                AuthParameters={
+                    'USERNAME': '',
+                    'PASSWORD': ''
+                }
             )
+            token_str = response['AuthenticationResult']['IdToken']
+            token = HTTPAuthorizationCredentials(scheme="Bearer", credentials=token_str)
+            request.state.current_user = get_current_user(token)
+            #request.state.current_user = User(
+            #    id="test_user", name="test_user", groups=[]
+            #)
 
     response = call_next(request)  # type: ignore
     return response

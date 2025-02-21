@@ -1,0 +1,16 @@
+{
+  "conversationId": "01JJ25SJQKHP71PWNFC33A5VGZ",
+  "message": {
+    "role": "user",
+    "content": [
+      {
+        "contentType": "text",
+        "body": "Wer ist Manuel Mang?"
+      }
+    ],
+    "model": "claude-v3-haiku",
+    "parentMessageId" : "instruction"
+  },
+  "botId": "01JJM5238JNDK9VJY2HPSCATPJ",
+  "continueGenerate": false
+}

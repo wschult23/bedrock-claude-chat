@@ -1,0 +1,16 @@
+{
+  "conversationId": "01JJ25SJQKHP71PWNFC33A5VGZ",
+  "message": {
+    "role": "user",
+    "content": [
+      {
+        "contentType": "text",
+        "body": "Wer ist Lev?"
+      }
+    ],
+    "model": "claude-v3-haiku",
+    "parentMessageId" : "instruction"
+  },
+  "botId": "01JHTB8XJ4CY6R54HAFHTB6JBS",
+  "continueGenerate": false
+}
